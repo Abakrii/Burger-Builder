@@ -9,21 +9,21 @@ const BurgerBurger = () => {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 4
+    totalPrice: 0
   };
 
   const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
     meat: 1.3,
-    bacon: 0
+    bacon: 0.4
   };
 
   const [ingredientsState, setIngredientsState] = useState(
     BUILDER_BURGER_STATE.ingredients
   );
   const [priceState, stePriceState] = useState(BUILDER_BURGER_STATE.totalPrice);
-  
+
   const addIngredientHandler = type => {
     const oldCount = ingredientsState[type];
     const updatedCount = oldCount + 1;
@@ -40,7 +40,7 @@ const BurgerBurger = () => {
 
   const removeIngredientHandler = type => {
     const oldCount = ingredientsState[type];
-    if(oldCount<=0) return;
+   
     const updatedCount = oldCount - 1;
     const updatedIng = {
       ...ingredientsState
@@ -55,16 +55,22 @@ const BurgerBurger = () => {
 
   const disabledInfo = {
     ...ingredientsState
-  }
+  };
 
-  for(let key in disabledInfo) {
-    disabledInfo[key] = disabledInfo[key] <= 0
+  for (let key in disabledInfo) {
+    disabledInfo[key] = disabledInfo[key] <= 0;
   }
 
   return (
     <div>
       <Burger ingredients={ingredientsState} />
-      <BuildControls ingRemove={removeIngredientHandler} ingAdded={addIngredientHandler} disabled={disabledInfo}/>
+      <BuildControls
+        price={priceState}
+        ingRemove={removeIngredientHandler}
+        ingAdded={addIngredientHandler}
+        disabled={disabledInfo}
+        price={priceState}
+      />
     </div>
   );
 };

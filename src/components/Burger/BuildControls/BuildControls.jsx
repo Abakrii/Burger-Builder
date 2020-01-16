@@ -11,6 +11,7 @@ const controls = [
 
 const BuildControls = props => (
   <div className={style.BuildControls}>
+      <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
     {controls.map(ctrl => (
       <BuildControl
         remove={() => props.ingRemove(ctrl.type)}
