@@ -8,8 +8,7 @@ const BurgerBurger = () => {
       bacon: 0,
       cheese: 0,
       meat: 0
-    },
-    totalPrice: 0
+    }
   };
 
   const INGREDIENT_PRICES = {
@@ -19,11 +18,23 @@ const BurgerBurger = () => {
     bacon: 0.4
   };
 
+  const [purchasableState, setPurchasable] = useState(false);
   const [ingredientsState, setIngredientsState] = useState(
     BUILDER_BURGER_STATE.ingredients
   );
-  const [priceState, stePriceState] = useState(BUILDER_BURGER_STATE.totalPrice);
+  const [priceState, stePriceState] = useState(0);
 
+  const updatePurshaseState = inredients => {
+    const sum = Object.keys(inredients)
+      .map(igKey => {
+        return inredients[igKey];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+
+    setPurchasable(sum > 0);
+  };
   const addIngredientHandler = type => {
     const oldCount = ingredientsState[type];
     const updatedCount = oldCount + 1;
@@ -36,11 +47,11 @@ const BurgerBurger = () => {
     const newPrice = oldPrice + priceAddition;
     stePriceState(newPrice);
     setIngredientsState(updatedIng);
+    updatePurshaseState(updatedIng);
   };
 
   const removeIngredientHandler = type => {
     const oldCount = ingredientsState[type];
-   
     const updatedCount = oldCount - 1;
     const updatedIng = {
       ...ingredientsState
@@ -51,6 +62,7 @@ const BurgerBurger = () => {
     const newPrice = oldPrice - priceAddition;
     stePriceState(newPrice);
     setIngredientsState(updatedIng);
+    updatePurshaseState(updatedIng);
   };
 
   const disabledInfo = {
@@ -69,6 +81,7 @@ const BurgerBurger = () => {
         ingRemove={removeIngredientHandler}
         ingAdded={addIngredientHandler}
         disabled={disabledInfo}
+        purchasable={purchasableState}
         price={priceState}
       />
     </div>
