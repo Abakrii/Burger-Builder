@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Burger from "../../components/Burger/Burger";
+import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 const BurgerBurger = () => {
   const INGREDIENTS_STATE = {
     salad: 0,
@@ -11,7 +12,7 @@ const BurgerBurger = () => {
   return (
     <div>
       <Burger ingredients={ingredientsState} />
-      <div>Build Controls</div>
+      <BuildControls />
     </div>
   );
 };
