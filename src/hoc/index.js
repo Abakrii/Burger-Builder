@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-
-const aux = ({childern}) => (childern);
-
+const aux = ({ childern }) => childern;
 
 export default aux;
+ƒ;
+Í
