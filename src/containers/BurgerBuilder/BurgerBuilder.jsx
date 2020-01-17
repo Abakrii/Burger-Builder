@@ -82,9 +82,12 @@ const BurgerBurger = () => {
     setPurshasing(true)
   }
 
+  const purshaseCancelHandler = ( ) => {
+    setPurshasing(false)
+  }
   return (
     <div>
-      <Modal show={purshasingState}>
+      <Modal show={purshasingState} modalClosed={purshaseCancelHandler}>
         <OrderSummary ingredients={ingredientsState}/>
       </Modal>
       <Burger ingredients={ingredientsState} />
