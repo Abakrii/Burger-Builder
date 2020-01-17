@@ -85,10 +85,21 @@ const BurgerBurger = () => {
   const purshaseCancelHandler = ( ) => {
     setPurshasing(false)
   }
+
+  const purchaseContinueHandler = () => {
+    alert('You Continue')
+  }
+
+  const purchaseCancelHandler = () => {
+    setPurshasing(false)
+  }
   return (
     <div>
       <Modal show={purshasingState} modalClosed={purshaseCancelHandler}>
-        <OrderSummary ingredients={ingredientsState}/>
+        <OrderSummary   ingredients={ingredientsState}
+          purchaseCancelled={purchaseCancelHandler}
+          purchaseContinue={purchaseContinueHandler}
+        />
       </Modal>
       <Burger ingredients={ingredientsState} />
       <BuildControls
