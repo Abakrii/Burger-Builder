@@ -99,6 +99,7 @@ const BurgerBurger = () => {
         <OrderSummary   ingredients={ingredientsState}
           purchaseCancelled={purchaseCancelHandler}
           purchaseContinue={purchaseContinueHandler}
+          price={priceState}
         />
       </Modal>
       <Burger ingredients={ingredientsState} />
