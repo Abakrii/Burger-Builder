@@ -10,9 +10,14 @@ const Layout = ({ children }) => {
    const purshaseCancelHandler = ( ) => {
     setSideDrawerState(false)
   }
+
+  const sideDrawerToggleHandler = ( ) => {
+    if(!sideDrawerState)
+    setSideDrawerState(false)
+  }
    return (
     <div>
-      <Toolbar/>
+      <Toolbar toggleClicked={sideDrawerToggleHandler} />
       <SideDrawer open={sideDrawerState} closed={purshaseCancelHandler}/>
       <div>Toolbar, SideDrawe, BackDrop</div>
       <main className={style.Content}>{children}</main>
