@@ -1,13 +1,19 @@
-import React from "react";
+import React,{useState} from "react";
 
 import style from "./Layout.module.css";
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SildeDrawer/SideDrawer'
 const Layout = ({ children }) => {
-  return (
+  
+   const  [sideDrawerState, setSideDrawerState] = useState(true);
+
+   const purshaseCancelHandler = ( ) => {
+    setSideDrawerState(false)
+  }
+   return (
     <div>
       <Toolbar/>
-      <SideDrawer/>
+      <SideDrawer open={sideDrawerState} closed={purshaseCancelHandler}/>
       <div>Toolbar, SideDrawe, BackDrop</div>
       <main className={style.Content}>{children}</main>
     </div>
@@ -15,3 +21,4 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+ 
