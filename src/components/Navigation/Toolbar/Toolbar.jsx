@@ -7,7 +7,10 @@ const Toolbar = () => (
         <div >
             Menu            
         </div>
-       <Logo/>
+       
+        <Logo />
+       
+     
         <nav>
             <NavigationItems/>
         </nav>
